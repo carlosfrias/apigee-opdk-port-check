@@ -1,7 +1,9 @@
 ---
 - name: Setup listener
-  shell: "nc -l -p {{ item }} &"
+  shell: "nc -l -p {{ item }}"
   with_items: "{{ ports }}"
+  async: 10
+  poll: 0
 
 - name: Validate port
   wait_for:
