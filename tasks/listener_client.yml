@@ -8,7 +8,7 @@
 - name: Validate port
   wait_for:
     port: "{{ item }}"
-    timeout: 2
+    timeout: "{{ timeout_port | default(2) }}"
     host: "{{ private_address }}"
   delegate_to: "{{ hostvars[host]['private_address'] }}"
   with_items: "{{ ports }}"
