@@ -6,7 +6,7 @@ The purpose of thie Ansible role is report whether Apigee ports are in face acce
 Requirements
 ------------
 
-T
+N/A
   
 Role Variables
 --------------
