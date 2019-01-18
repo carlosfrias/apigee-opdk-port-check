@@ -1,6 +1,6 @@
 # Apigee OPDK Port Check
 
-The purpose of thie Ansible role is report whether Apigee ports are in face accessible.
+The purpose of thise Ansible role is to report whether Apigee ports are in fact accessible.
 
 
 Requirements
@@ -52,6 +52,8 @@ Including an example of how to use your role (for instance, with variables passe
        vars:
          ports:
          - "{{ ldap_ports }}"
+         host_list:
+         - 0.0.0.0
        roles:
          - { role: apigee-opdk-port-check, host_list: "{{ groups['ms'] }}" }    
          
