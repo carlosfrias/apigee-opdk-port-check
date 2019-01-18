@@ -1,12 +1,10 @@
 ---
 # defaults file for apigee-opdk-port-check
-
 cassandra_ports:
 - 7199
 - 9160
 - 9042
 - 7000
-- 7001
 
 zk_ports:
 - 2181
