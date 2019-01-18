@@ -1,12 +1,12 @@
 # Apigee OPDK Port Check
 
-The purpose of thise Ansible role is to report whether Apigee ports are in fact accessible.
+The purpose of this Ansible role is to report whether Apigee ports are in fact accessible.
 
 
 Requirements
 ------------
 
-N/A
+The Ansible inventory has been configured for use by these playbooks as described.
   
 Role Variables
 --------------
