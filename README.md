@@ -1,38 +1,65 @@
-Role Name
-=========
+# Apigee OPDK Port Check
 
-A brief description of the role goes here.
+The purpose of thie Ansible role is report whether Apigee ports are in face accessible.
+
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
-
+T
+  
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Two collections are expected. 
+
+host_list: A list of hosts from which to check the taret ports.
+
+ports: A list of ports that should be found accessible. 
+
+timeout_port: The amount of time that we should wait for a response. Default =  10
+
+private_address: The private IP asssigned. 
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+he following Ansible roles are used by this role: 
 
+* apigee-opdk-settings-private-address
+* apigee-opdk-settings-region
+* apigee-opdk-settings-management-server
+* apigee-opdk-settings-cassandra
+* apigee-opdk-settings-ldap
+* apigee-opdk-settings-postgres
+* apigee-opdk-port-check 
+  
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+     - name: Validate that Openldap port requirements are met
+       hosts: ldap
+       tags: ['ldap']
+       strategy: free
+       vars:
+         ports:
+         - "{{ ldap_ports }}"
+       roles:
+         - { role: apigee-opdk-port-check, host_list: "{{ groups['ms'] }}" }    
+         
+         
+         
+         
 
 License
 -------
 
-BSD
+Apache 2.0
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Carlos Frias
