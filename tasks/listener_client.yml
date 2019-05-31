@@ -12,5 +12,4 @@
     host: "{{ private_address }}"
   delegate_to: "{{ hostvars[host]['private_address'] }}"
   with_items: "{{ ports }}"
-#  when: hostvars[host]['private_address'] != private_address
 
